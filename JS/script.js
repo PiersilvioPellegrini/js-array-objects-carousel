@@ -9,7 +9,6 @@ const btnNext = document.querySelector(".btnNext");
 
 let currentimage = 0;
 
-
 // array di elementi immagini
 const images = [
   {
@@ -47,6 +46,13 @@ images.forEach(function (element) {
 //evento sul bootone next
 btnNext.addEventListener("click", function () {
   console.log("click next");
+  const oldEl = containerImg.querySelector(".active");
+  oldEl.classList.remove("active");
+    currentimage++;
+    const newEl = containerImg.querySelectorAll(images[currentimage].image);
+    newEl.classList.add("active");
+    Title.innerHTML = images[currentimage].title;
+    Text.innerHTML = images[currentimage].text; 
 });
 
 //evento sul bottone prev
@@ -62,7 +68,6 @@ function createImg(element) {
 
   const title = document.createElement("h2");
   title.textContent = element.title;
-  
 
   const text = document.createElement("p");
   text.textContent = element.text;
@@ -74,4 +79,8 @@ function createImg(element) {
   console.log(img);
   console.log(title);
   console.log(text);
+
+//   if (images[i] === currentimage) {
+//     img.classList.add("active");
+//   }
 }
